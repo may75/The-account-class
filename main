@@ -1,0 +1,85 @@
+# create class Account 
+class Account():
+ 
+    def __init__ (self,id = 0 , init_balance= 100 , annual_interset_rate = 0):
+        self.__id = id
+        self.__balance = init_balance
+        self.__annual_interset_rate = annual_interset_rate
+   
+    #accessors and mutators for all fields 
+    
+    def getid(self):
+        return self.__id
+  
+    def getbalance(self):
+        return self.__balance
+    
+    def get_annual_interset_rate(self):
+        return self.__annual_interset_rate 
+    
+    #returns monthly interest rate
+    
+    def get_monthly_interest_rate(self):
+        
+        # Calculate monthly interest rate and returning it
+        
+        return self.__annual_interset_rate / 12 
+    
+    # returns monthly interest amount
+    
+    def get_monthly_interest(self):
+        
+        # Divide monthly_interset by 100 to get rate as a decimal number
+        
+        monthly_interest = self.get_monthly_interest_rate() / 100
+        
+        return self.__balance * monthly_interest
+    
+    def setid(self, id):
+        self.__id = id
+    
+    def setbalance(self, balance):
+        self.__balance = balance
+    
+    def set_annual_interest_rate(self, rate):
+        self.__annual_interset_rate = rate
+    
+    #withdraws amount from balance
+    
+    def withdraw(self, amount):
+        self.__balance -= amount    
+    
+    # deposits amount to balance
+         
+    def deposit(self, amount):
+        self.__balance += amount
+    
+    def printdetails(self):
+        print("Account Id: ", self.__id)
+        print("Account balance: $%.2f"%self.__balance)
+        
+if __name__ == '__main__':
+    
+    # create account call the withdraw method, call the deposit method        
+    myaccount = Account(1122, 20000, 4.5)
+    #withdraw $2500
+    myaccount.printdetails()
+    print("Withdraw 2500 ")
+    myaccount.withdraw(2500)
+    print('details Withdrawing ')
+    # Deposit $3000
+    myaccount.printdetails()
+    print('Depositing 3000')
+    myaccount.deposit(3000)
+    
+    # Display the account information
+   
+    print("\nAccount information")
+    print('ID: ', myaccount.getid())
+    print('Balance: ${0:0,.2f}'.format(myaccount.getbalance()))
+    print('Monthly Interset Rate: {0}%'.format
+                  (myaccount.get_monthly_interest_rate()))
+    print('Monthly Interest: ${0:0,.2f}'.format
+                  (myaccount.get_monthly_interest()))
+  
+    
